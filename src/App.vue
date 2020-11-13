@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header v-bind:class="{homeHeader: $route.name == 'Home', schHeader: $route.name == 'Schedule'}"> 
+    <header v-bind:class="{homeHeader: $route.name == 'Home', schHeader: $route.name == 'Schedule'}" id="appheader"> 
       <h1>Northside Youth Soccer League</h1>
       <img src="./assets/nysl_logo.png" id="logo">
       <div id="nav">
@@ -37,7 +37,7 @@
     padding: 0%;
   }
   /*header*/
-  header{
+  #appheader{
     background-image: url("assets/fondodp.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -104,6 +104,17 @@
   .schMain{
     background-color: rgba(162, 93, 241, 0.74);
     padding: 1em;
+    font-size: 1em !important;
+    h4{
+      margin: 0% !important;
+      font-size: 1.2em;
+    }
+    p{
+      margin: 0% !important;
+    }
+    #email{
+      font-size: 1em;
+    }
   }
   /*footer*/
   footer{
