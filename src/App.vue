@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header v-bind:class="{homeHeader: $route.name == 'Home', schHeader: $route.name == 'Schedule'}" id="appheader"> 
+    <header v-bind:class="{homeHeader: $route.name == 'Home', schHeader: $route.name == 'Schedule', userHeader: $route.name == 'User'}" id="appheader"> 
       <h1>Northside Youth Soccer League</h1>
       <img src="./assets/nysl_logo.png" id="logo">
       <div id="nav">
@@ -10,25 +10,34 @@
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
               <b-nav-item to="schedule">Schedule</b-nav-item>
+              <b-nav-item to="user">User</b-nav-item>
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>
       </div>
     </header>
-    <main v-bind:class="{homeMain: $route.name == 'Home', schMain: $route.name == 'Schedule'}">
+    <main v-bind:class="{homeMain: $route.name == 'Home', schMain: $route.name == 'Schedule', userMain: $route.name == 'User'}">
       <router-view>
 
       </router-view>
     </main>
-    <footer v-bind:class="{homeFoot: $route.name == 'Home', schFoot: $route.name == 'Schedule'}">
+    <footer v-bind:class="{homeFoot: $route.name == 'Home', schFoot: $route.name == 'Schedule', userFoot: $route.name == 'User'}">
       <h3><strong>Please email us: </strong><a href="mailto:nysl@chisoccer.org">Here</a></h3>
       <p>We will reply to your email as soon as we can</p>
     </footer>
   </div>
 </template>
 <script>
+  import { mapMutations } from "vuex"
+
   export default {
-    
+    name: "app",
+    methods: {
+      ...mapMutations(["getUser"])
+    },
+    mounted() {
+      this.getUser()
+    }
   }
 </script>
 <style lang="scss">
@@ -42,7 +51,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
-    width: 25em;
+    width: 100%;
     height: 13em;
 
   }
@@ -89,6 +98,14 @@
       background-color: rgb(95, 9, 194);
     }
   }
+  .userHeader{
+    div{
+      background-color: rgb(209, 13, 235);
+    }
+    h1{
+      background-color: rgb(135, 3, 158);
+    }
+  }
   /*main*/      
   main{
     text-align: center;
@@ -115,6 +132,11 @@
     #email{
       font-size: 1em;
     }
+    
+  }
+  .userMain{
+    background-color: rgba(246, 115, 235, 0.746) !important;
+    padding: 1em;
   }
   /*footer*/
   footer{
@@ -137,5 +159,8 @@
   }
   .schFoot{
     background-color: rgb(130, 24, 252);
+  }
+  .userFoot{
+    background-color: rgb(209, 13, 235);
   }
 </style>
