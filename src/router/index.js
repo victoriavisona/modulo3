@@ -20,7 +20,11 @@ const routes = [
     name: 'User',
     component: () => import('../views/User.vue')
   },
-
+  {
+    path: '/chatroom/:id',
+    name: 'Chatroom',
+    component: () => import('../components/Chatroom.vue')
+  },
 ]
 
 const router = new VueRouter({

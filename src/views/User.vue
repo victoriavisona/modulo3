@@ -4,14 +4,17 @@
           <button @click="login()">Login With Google</button>
       </template>
       <template v-else>
-          <button>My Info</button>
-          <div>
-              <h2> Hi: {{user.displayName}}</h2>
-              <p>{{user.email}}</p>
-              <img :src="user.photoURL">
-          </div>
-          <button>Chat</button>
-          <button @click="logout()">Log Out</button>
+            <div>
+                <h2><strong>My Info:</strong></h2>
+                <h2> Hi: {{user.displayName}}</h2>
+                <p>{{user.email}}</p>
+                <img :src="user.photoURL">
+            </div>
+            <router-link to="'/Chatroom/' + index">
+                <b-button >Chat</b-button>
+            </router-link>
+        
+            <button @click="logout()">Log Out</button>
       </template>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header v-bind:class="{homeHeader: $route.name == 'Home', schHeader: $route.name == 'Schedule', userHeader: $route.name == 'User'}" id="appheader"> 
+    <header v-bind:class="{homeHeader: $route.name == 'Home', schHeader: $route.name == 'Schedule', userHeader: $route.name == 'User', chatHeader: $route.name == 'Chatroom'} " id="appheader"> 
       <h1>Northside Youth Soccer League</h1>
       <img src="./assets/nysl_logo.png" id="logo">
       <div id="nav">
@@ -16,12 +16,12 @@
         </b-navbar>
       </div>
     </header>
-    <main v-bind:class="{homeMain: $route.name == 'Home', schMain: $route.name == 'Schedule', userMain: $route.name == 'User'}">
+    <main v-bind:class="{homeMain: $route.name == 'Home', schMain: $route.name == 'Schedule', userMain: $route.name == 'User', chatMain: $route.name == 'Chatroom'}">
       <router-view>
 
       </router-view>
     </main>
-    <footer v-bind:class="{homeFoot: $route.name == 'Home', schFoot: $route.name == 'Schedule', userFoot: $route.name == 'User'}">
+    <footer v-bind:class="{homeFoot: $route.name == 'Home', schFoot: $route.name == 'Schedule', userFoot: $route.name == 'User', chatFoot: $route.name == 'Chatroom'}">
       <h3><strong>Please email us: </strong><a href="mailto:nysl@chisoccer.org">Here</a></h3>
       <p>We will reply to your email as soon as we can</p>
     </footer>
@@ -106,6 +106,14 @@
       background-color: rgb(135, 3, 158);
     }
   }
+  .chatHeader{
+    div{
+      background-color: rgb(233, 71, 71);
+    }
+    h1{
+      background-color: rgb(206, 13, 13);
+    }
+  }
   /*main*/      
   main{
     text-align: center;
@@ -113,6 +121,7 @@
     a{
       text-decoration: underline !important;
     }
+    
   }
   .homeMain{
     background-color: rgba(102, 221, 236, 0.849);
@@ -137,6 +146,40 @@
   .userMain{
     background-color: rgba(246, 115, 235, 0.746) !important;
     padding: 1em;
+    font-family: 'Times New Roman', Times, serif;
+    h2{
+      font-size: 1.5em !important;
+    }
+    button{
+      border-radius: 20%;
+      background-color: rgb(142, 12, 228);
+      border-color: black;
+      color: white;
+      font-family: 'Times New Roman', Times, serif;
+      margin: 1em;
+    }
+  }
+  .chatMain{
+    background-color: rgba(246, 115, 143, 0.746) !important;
+    padding: 1em;
+    font-family: 'Times New Roman', Times, serif;
+    h2{
+      font-size: 1.5em !important;
+    }
+    .body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .bubble{
+      text-align: left;
+      border-radius: 20%;
+      background-color: rgb(235, 150, 70);
+      padding: 2em 1em;
+      margin: 20px 0;
+      min-width: 25vw;
+    }
   }
   /*footer*/
   footer{
@@ -162,5 +205,8 @@
   }
   .userFoot{
     background-color: rgb(209, 13, 235);
+  }
+  .chatFoot{
+    background-color: rgba(228, 64, 64, 0.815);
   }
 </style>
